@@ -1,0 +1,1 @@
+curl --request POST  --url "https://dev-3v86h4v4.us.auth0.com/oauth/token" --header "content-type: application/x-www-form-urlencoded" --data "grant_type=authorization_code&client_id=KvZA39DqwT8jk91iKXS57IiZBlNkQ0UD&client_secret=xqWs-upbuOcM2IC9ejtq3FdW3mF0i2p0XMKgW1X6fu146wYNuHPlYmD8ZE8P4FkD&code=mLZm8goQZJ9znkvJ&redirect_uri=http://localhost:8080/oauth/redirect"

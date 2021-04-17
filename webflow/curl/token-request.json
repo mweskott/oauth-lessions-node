@@ -1,0 +1,6 @@
+{
+    "client_id":"iDFM0Nv3KGdyGmTIOVZL3ZNq2kksaAnc",
+    "client_secret":"l8l09EKeve-oHi-vlRRLxtISmwxK6eLBgIZCHG6-Lr2K7OoQPZ3vJlFYzE7Zd_te",
+    "audience":"https://api.auth0-test.com",
+    "grant_type":"client_credentials"
+}

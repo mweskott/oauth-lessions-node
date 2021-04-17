@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Hello</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+	(async () => {
+		const oauthconfig = await fetch('/oauthconfig').then(res => res.json());
+		console.log('oauthconfig', oauthconfig);
+
+		// We can get the token from the "access_token" query
+		// param, available in the browsers "location" global
+		const query = window.location.search.substring(1)
+		const accessToken = query.split('access_token=')[1]
+		sessionStorage.setItem('access_token', accessToken);
+
+		const userInfo = await fetch(oauthconfig.userinfo_endpoint, {
+			headers: {
+				// Include the token in the Authorization header
+				Authorization: 'bearer ' + accessToken
+			}
+		}).then(res => res.json());
+		console.log('userInfo', userInfo);
+
+	})();
+
+
+
+
+	if (false) {
+
+	// Call the user info API using the fetch browser library
+	fetch('//api.github.com/user', {
+			headers: {
+				// Include the token in the Authorization header
+				Authorization: 'bearer ' + token
+			}
+		})
+		// Parse the response as JSON
+		.then(res => res.json())
+		.then(res => {
+			// Once we get the response (which has many fields)
+			// Documented here: https://developer.github.com/v3/users/#get-the-authenticated-user
+			// Write "Welcome <user name>" to the documents body
+			const nameNode = document.createElement('pre');
+			nameNode.appendChild(document.createTextNode(JSON.stringify(res, null, 2)));
+			document.body.appendChild(nameNode)
+		});
+	
+	// Call the user info API using the fetch browser library
+	fetch('//api.github.com/users/mweskott/repos', {
+			headers: {
+				// Include the token in the Authorization header
+				Authorization: 'bearer ' + token
+			}
+		})
+		// Parse the response as JSON
+		.then(res => res.json())
+		.then(res => {
+			const nameNode = document.createElement('pre');
+			nameNode.appendChild(document.createTextNode(JSON.stringify(res, null, 2)));
+			document.body.appendChild(nameNode)
+		});
+
+	}
+</script>
+
+<script type="module">
+	if (false) {
+	import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+	console.log(Octokit);
+
+	const query = window.location.search.substring(1)
+	const token = query.split('access_token=')[1]
+
+	const octokit = new Octokit({ auth: token });
+	console.log(octokit);
+	octokit.users.getAuthenticated().then(response => console.log(response.data));
+	}
+</script>
+
+
+</html>

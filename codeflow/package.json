@@ -1,0 +1,9 @@
+{
+  "name": "oauth-lessions-node-codeflow",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.16.3"
+  }
+}

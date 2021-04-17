@@ -1,0 +1,1 @@
+curl --request POST --url https://dev-3v86h4v4.us.auth0.com/oauth/token  --header "content-type: application/json"  --data "@token-request.json"
